@@ -1,0 +1,85 @@
+//In lab
+/*Simran Kaur */
+
+
+#include<stdio.h>
+#include<stdlib.h>
+#define SIZE 3
+
+void decompose( long long no, int *AAA , int *PPP,int *LLLL);                      //Function Prototype
+
+void decompose( long long  no, int *AAA , int *PPP , int *LLLL )                  //Function Prototype Definition
+{
+	*AAA = no / 10000000;                                                    //Extracting Area code
+	*PPP = (no / 10000) % 1000;                                              //Extracting Prefix
+	*LLLL = no % 10000;                                                      //Extracting Line Number
+	printf("(%3d)-%3d-%4d\n", *AAA, *PPP, *LLLL);
+	
+}
+
+int main(void)
+{
+	long long phoneNumber[SIZE] = { {0LL} };
+	int option, i , j = 0 ;                                                   // j = number of phonenumbers
+	int acode, prefix, line;
+	printf("---=== Phone Numbers ===---\n");
+
+	do {
+		  printf("\n");
+		  printf("1. Display Phone List\n");                                   // Menu
+		  printf("2. Add a Number\n");
+		  printf("0. Exit\n\n");
+		  printf("Please select from the above options: ");
+		  scanf("%d", &option);
+		  printf("\n");
+
+		  switch (option)
+		    {
+		        case 0: printf("Exiting Phone Number App. Good Bye!!!\n\n");       // exiting from app
+			            exit(0);
+			            break;
+
+		        case 1: printf("Phone Numbers\n");                                 // displaying phonenumbers
+			            printf("==============\n");
+			            for (i = 0; i < j; i++)
+			              {
+				             decompose(phoneNumber[i], &acode, &prefix, &line);
+			              }
+                        break;
+
+		        case 2: for (i = 0; i < SIZE; i++)                                 // extracting areacode,prefix and linefrom phone numbers
+			              {
+                              if (SIZE > j)
+                                {
+									printf("\nAdd a Number\n");
+									printf("============\n");
+									scanf("%lld", &phoneNumber[i]);
+									j++;
+				                    if (j < SIZE)
+									  {
+										 printf("\n1. Display Phone List\n");
+										 printf("2. Add a Number\n");
+						                 printf("0. Exit\n\n");
+						                 printf("Please select from the above options: ");
+						                 scanf("%d", &option);
+                                      }
+				                }
+
+			             	  else 
+							    {
+					                printf("\nAdd a Number\n");
+									printf("============\n");
+									printf("ERROR!!! Phone Number List is Full\n ");
+									break;
+								}
+				          }
+			            break;
+
+				default: printf("\nERROR!!! Incorrect Option: Try Again\n\n");
+			             break;
+		    }
+
+	   } while (option != 0);
+	return 0;
+}
+
