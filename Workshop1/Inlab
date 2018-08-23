@@ -1,0 +1,13 @@
+/*student name - Simran kaur
+seneca email - skaur258@myseneca.ca*/
+//In – lab 
+
+
+#include<stdio.h>
+main()
+{
+
+	printf("** Welcome to C Programming **\n");
+	
+	
+}
