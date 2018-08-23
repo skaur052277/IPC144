@@ -1,0 +1,73 @@
+/* Simran Kaur */
+//In – Lab 
+
+
+#include<stdio.h>
+#include<stdlib.h>
+# define SIZE 2
+
+struct employee {
+		           int idno;
+		           int age;
+		           double salary;
+	            };
+              
+int main(void)
+{
+	int option, i,  j = 1;
+	struct employee emp[SIZE] = {{0}};
+    printf("\n---=== EMPLOYEE DATA ===--- \n");
+	do {
+           printf("\n1. Display Empolyee Information");
+		   printf("\n2. Add Employee");
+		   printf("\n0. Exit\n");
+		   printf("\n Please select from the above options: ");
+		   scanf("%d", &option);
+		   printf("\n");
+		   switch (option)
+			 {
+			     case 0:  printf("\nExiting Employee Data Program. Good Bye!!!\n");
+				          exit(0);
+				          break;
+			     case 1:  printf("\nEMP ID    EMP AGE    EMP SALARY");
+				          printf("\n======    =======    ==========");
+                          for (i = 0; i < SIZE; ++i)
+					        {
+					            if(emp[i].idno > 0)
+					              { printf("\n%6d  %9d   %11.2lf", emp[i].idno, emp[i].age, emp[i].salary); }
+                            }
+				          printf("\n");
+				          break;
+			     case 2:  if(SIZE >= j)
+			                { for(i = 0; i < SIZE; ++i)
+				                {
+					               printf("\nAdding Employee");
+					               printf("\n===============");
+                                   printf("\nEnter Employee ID: ");
+					               scanf("%d", &emp[i].idno);
+					               printf("Enter Employee Age: ");
+					               scanf("%d", &emp[i].age);
+					               printf("Enter Employee Salary: ");
+					               scanf("%lf", &emp[i].salary);
+					               j++;
+			                       printf("\n1. Display Empolyee Information");
+					               printf("\n2. Add Employee");
+					               printf("\n0. Exit\n");
+					               printf("\n Please select from the above options: ");
+					               scanf("%d", &option);
+					               if (j > SIZE)
+					                  {
+						                  printf("\nAdding Employee");
+						                  printf("\n===============");
+						                  printf("\nERROR!!! Maximum Number of Employees Reached\n");
+					                  }
+				                }
+				              break;
+				            }
+			     default: printf("\nERROR: Incorrect Option: Try Again\n\n");
+				          break;
+			 }
+    } while (option!= 0);
+	return 0;
+}
+
