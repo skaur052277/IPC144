@@ -1,0 +1,12 @@
+/*student name - Simran kaur*/
+//In – lab 
+
+
+#include<stdio.h>
+main()
+{
+
+	printf("** Welcome to C Programming **\n");
+	
+	
+}
