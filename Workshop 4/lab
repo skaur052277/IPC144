@@ -1,0 +1,80 @@
+/*Simran Kaur */
+
+
+#include<stdio.h>
+#include<stdlib.h>                                   //This header file is used for exit() function
+int main(void)
+
+{
+	int i, n, arr[10], ar[10], high = -40, low = 40, hday, lday, m;
+	float avg = 0, sum = 0;
+	printf("---=== IPC Temperature Analyzer V2.0 ===---");
+	printf("\nPlease enter the number of days, between 3 and 10, inclusive: ");
+	scanf("%d", &n);
+	if (n < 3 || n > 10)
+	   {
+		  printf("\nInvalid entry, please enter a number between 3 and 10, inclusive: ");
+		  scanf("%d", &n);
+	   }
+	printf("\n");
+
+	// Taking Highest and lowest temperature for each n number of days as an input from user 
+	for (i = 1 ; i <= n ; i++)
+	   {
+		  printf("Day %d - High: ", i);
+		  scanf("%d", &arr[i]);
+		  printf("Day %d - Low: ", i);
+		  scanf("%d", &ar[i]);
+	   }
+	printf("\nDay   Hi   Low");
+
+	// Displaying the temperature in the form of array
+	for (i = 1 ; i <= n ; i++)
+	   {
+		  printf("\n%d     %d     %d", i, arr[i], ar[i]);
+	   }
+
+	// Finding and printing the highest and lowest temperature
+	for (i = 1; i <= n; i++)
+	   {
+		  if (arr[i] > high)
+			high = arr[i];
+		    hday = i;
+
+		  if (ar[i] < low)
+			low = ar[i];
+		    lday = i;
+	   }
+	printf("\nThe highest temperature was %d, on day %d", high, hday);
+	printf("\nThe lowest temperature was %d, on day %d\n", low, lday);
+
+	//Calculating the average temperature according to the user's input for 'm' number of days
+	printf("\nEnter a number between 1 to %d to see the average temperature for the entered number of days, enter a negative number to exit: ", n);
+	scanf("%d", &m);
+	while (m != -1) 
+	   {
+		  if (m < 0)
+		    {
+			   printf("\nGoodbye !");
+		 	   exit(0);
+            }
+          if (m > n || m == 0)
+		    {
+			   printf("\nInvalid entry, please enter a number between 1 and %d, inclusive: ", n);
+			   scanf("%d", &m);
+		    }
+		  else
+		  {
+			  for (i = 1; i <= m; i++)
+				  {
+					  sum += arr[i] + ar[i];
+				  }
+			  avg = sum / (2 * m); 
+			  printf("\nThe average temperature up to day %d is: %.2f\n", m, avg);
+			  printf("\nEnter a number between 1 to %d to see the average temperature for the entered number of days, enter a negative number to exit: ", n);
+			  scanf("%d", &m);
+		  }
+       }
+	printf("\nGoodbye!");
+	return 0;
+}
