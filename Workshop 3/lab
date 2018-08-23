@@ -1,0 +1,60 @@
+/* Simran Kaur */
+
+
+#include<stdio.h>
+#define NUMS 4
+int main(void)
+{
+	int  tlow[5], thigh[5], i, high = -40, low = 40, daymax, daymin ;
+	float totalhigh = 0, totallow = 0;
+	float mean;
+	printf("---=== IPC Temperature Analyzer ===---");
+    {  for (i = 1; i <= NUMS; i++)
+	   {
+		do {
+			printf("\nEnter the high value for day %d: ", i);
+			scanf("%d", &thigh[i]);
+
+			printf("\nEnter the low value for day %d: ", i);
+			scanf("%d", &tlow[i]);
+
+			if (!(thigh[i]>=-40 && thigh[i]<=+40 && thigh[i]> tlow[i] && tlow[i] >= -41 && tlow[i] <= +40))
+			{
+				printf("\nIncorrect values, temperatures must be in the range -40 to 40, high must be greater than low.\n");
+			}
+			else
+			{
+				totalhigh = totalhigh + thigh[i];
+				totallow = totallow + tlow[i];
+			}
+
+		} while (!(thigh[i]>= -40 && thigh[i] <= +40 && thigh[i] > tlow[i] && tlow[i] >= -41 && tlow[i] <= +40));
+	  }
+	}
+	
+	mean = (totalhigh + totallow) / (2 * NUMS);
+	printf("\nThe average (mean) temperature was: %.2f\n", mean);
+	
+	for (i = 1; i <= NUMS; i++)
+	{
+		if (thigh[i] > high)
+		{
+			high = thigh[i];
+			daymax = i;
+		}
+	}
+	printf("The highest temperature was %d, on day %d ", high , daymax);
+	
+	for (i = 1; i <= NUMS; i++)
+    {
+		if (tlow[i] < low)
+		{
+			low = tlow[i];
+			daymin = i;
+		}
+	}
+	printf("\nThe lowest temperature was %d, on day %d ",low , daymin);
+	
+
+	return 0;
+}
